@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>DriveCommandMessage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DriveCommandMessage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">messages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">PoseVelocity2dDual</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Time</span><span class="s2">;</span>
+
+<span class="s0">public final class </span><span class="s1">DriveCommandMessage </span><span class="s2">{</span>
+    <span class="s0">public long </span><span class="s1">timestamp</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">forwardVelocity</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">forwardAcceleration</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">lateralVelocity</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">lateralAcceleration</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">angularVelocity</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">angularAcceleration</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">DriveCommandMessage</span><span class="s2">(</span><span class="s1">PoseVelocity2dDual</span><span class="s2">&lt;</span><span class="s1">Time</span><span class="s2">&gt; </span><span class="s1">poseVelocity</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">timestamp </span><span class="s2">= </span><span class="s1">System</span><span class="s2">.</span><span class="s1">nanoTime</span><span class="s2">();</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">forwardVelocity </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">linearVel</span><span class="s2">.</span><span class="s1">x</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">0</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">forwardAcceleration </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">linearVel</span><span class="s2">.</span><span class="s1">x</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">1</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">lateralVelocity </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">linearVel</span><span class="s2">.</span><span class="s1">y</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">0</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">lateralAcceleration </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">linearVel</span><span class="s2">.</span><span class="s1">y</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">1</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">angularVelocity </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">angVel</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">0</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">angularAcceleration </span><span class="s2">= </span><span class="s1">poseVelocity</span><span class="s2">.</span><span class="s1">angVel</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">1</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
