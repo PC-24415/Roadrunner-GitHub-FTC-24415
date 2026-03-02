@@ -17,9 +17,7 @@ public class MeepMeepRedCloseStartTwoBalls {
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-50, 48, Math.toRadians(310 + 180)))
                 .lineToY(14)
-                //Shoot
                 .waitSeconds(5)
-                //Intake ON
                 .splineTo(new Vector2d(-12,49), Math.toRadians(90))
                 //Intake Off
                 .splineToLinearHeading(new Pose2d(-24,24,Math.toRadians(135)), Math.toRadians(135))
@@ -27,9 +25,8 @@ public class MeepMeepRedCloseStartTwoBalls {
                 .waitSeconds(5)
                 //Intake On
                 .lineToY(12)
-                .splineToLinearHeading(new Pose2d(12,36, Math.toRadians(90)), Math.toRadians(90))
-                .lineToY(50)
-                //Intake Off
+                .splineToLinearHeading(new Pose2d(12,30, Math.toRadians(90)), Math.toRadians(90))
+                .lineToY(62)
                 .lineToY(30)
                 .splineToLinearHeading(new Pose2d(-24,24,Math.toRadians(135)), Math.toRadians(135))
                 //Shoot

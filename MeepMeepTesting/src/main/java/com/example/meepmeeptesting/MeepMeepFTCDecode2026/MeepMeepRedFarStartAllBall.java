@@ -16,28 +16,18 @@ public class MeepMeepRedFarStartAllBall {
                 .build();
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(60, 14, Math.toRadians(180)))
-                .splineToLinearHeading( new Pose2d(48,12,Math.toRadians(155)), Math.toRadians(655))
-                //Shoot
-                .waitSeconds(5)
-                //Intake On
-                .splineTo(new Vector2d(35,54), Math.PI / 2)
-                //Intake Off
-                .splineToLinearHeading( new Pose2d(50,12,Math.toRadians(150)), Math.toRadians(150))
-                //Shoot
-                .waitSeconds(5)
-                //Intake ON
-                .splineTo(new Vector2d(12, 54), Math.toRadians(90))
-                //Intake OFF
-                .lineToY(35)
-                .splineTo(new Vector2d(50,12), Math.toRadians(335))
-                //Shoot
-                .waitSeconds(5)
-                //Intake ON
-                .splineToLinearHeading( new Pose2d(-12,50,Math.toRadians(90)), Math.toRadians(90))
-                //Intake OFF
-                .splineToLinearHeading( new Pose2d(-12,12,Math.toRadians(135)), Math.toRadians(135))
-                //Shoot
-                .waitSeconds(5)
+                .splineToLinearHeading( new Pose2d(50,12,Math.toRadians(155)), Math.toRadians(655))
+                .waitSeconds(3.5)
+                .splineTo(new Vector2d(31,54), Math.PI / 2)
+                .lineToY(62)
+                .lineToY(56)
+                .splineToLinearHeading( new Pose2d(50,12,Math.toRadians(155)), Math.toRadians(150))
+                .waitSeconds(3.5)
+                .splineTo(new Vector2d(10, 38), Math.toRadians(90))
+                .lineToY(62)
+                .lineToY(50)
+                .splineToLinearHeading(new Pose2d(50,12, Math.toRadians(155)), Math.toRadians(335))
+                .waitSeconds(3.5)
                 .build());
 
         myBot.setDimensions(18.0,18.0);

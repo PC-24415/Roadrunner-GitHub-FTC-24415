@@ -58,15 +58,16 @@ public final class MecanumDrive {
                 RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
         public RevHubOrientationOnRobot.UsbFacingDirection usbFacingDirection =
                 RevHubOrientationOnRobot.UsbFacingDirection.RIGHT;
+
         // drive model parameters
-        public double inPerTick = 0.0; //0.0238154304142893;
-        public double lateralInPerTick = 0.0; //0.0263663828618511;
-        public double trackWidthTicks = 0.0; //1197.862225653793;
+        public double inPerTick = 0.0246913580246914; //0.0238154304142893;
+        public double lateralInPerTick = 0.0265120132560066; //0.0263663828618511;
+        public double trackWidthTicks = 1197.8806232617742; //1197.862225653793;
 
         // feedforward parameters (in tick units)
-        public double kS = 0.0; //1.3226288131741422;
-        public double kV = 0.0; //0.004156627630305341;
-        public double kA = 0.0; //0.00003;
+        public double kS = 1.2620294272805852; //1.3226288131741422;
+        public double kV = 0.004260372561636564; //0.004156627630305341;
+        public double kA = 0.00003; //0.00003;
 
         // path profile parameters (in inches)
         public double maxWheelVel = 50;
@@ -78,9 +79,9 @@ public final class MecanumDrive {
         public double maxAngAccel = Math.PI;
 
         // path controller gains
-        public double axialGain = 0.0; //4.0;
-        public double lateralGain = 0.0; //2.0;
-        public double headingGain = 0.0; //2.0; // shared with turn
+        public double axialGain = 4.0; //4.0;
+        public double lateralGain = 3.0; //2.0;
+        public double headingGain = 3.0; //2.0; // shared with turn
 
         public double axialVelGain = 0.0;
         public double lateralVelGain = 0.0;
@@ -137,7 +138,6 @@ public final class MecanumDrive {
             //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
             leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
             leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
-
 
             this.pose = pose;
         }
@@ -244,7 +244,7 @@ public final class MecanumDrive {
 
         voltageSensor = hardwareMap.voltageSensor.iterator().next();
 
-        localizer =  new PinpointLocalizer(hardwareMap, PARAMS.inPerTick, pose, () -> lazyImu.get().getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));   //new DriveLocalizer(pose);
+        localizer = new DriveLocalizer(pose);
 
         FlightRecorder.write("MECANUM_PARAMS", PARAMS);
     }

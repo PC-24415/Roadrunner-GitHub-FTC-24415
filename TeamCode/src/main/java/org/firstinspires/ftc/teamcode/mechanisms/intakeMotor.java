@@ -24,7 +24,7 @@ public class intakeMotor {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                intake.setPower(1.0);
+                intake.setPower(0.8);
                 initialized = true;
             }
 

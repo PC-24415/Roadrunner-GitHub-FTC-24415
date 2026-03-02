@@ -9,12 +9,21 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class ServoStopper {
     Servo stop;
+    double target;
+    double def;
 
-    public ServoStopper (Servo s){
+    public ServoStopper (Servo s, double t, double d){
 
         stop = s;
-        stop.setDirection(Servo.Direction.REVERSE);
-        stop.setPosition(0);
+        stop.setDirection(Servo.Direction.FORWARD);
+        target = t;
+        def = d;
+        stop.setPosition(def);
+    }
+
+    public static void ReverseDirection(ServoStopper s)
+    {
+        s.stop.setDirection(Servo.Direction.REVERSE);
     }
 
     public class StopDown implements Action {
@@ -24,15 +33,14 @@ public class ServoStopper {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                stop.setPosition(0.3);
+                stop.setPosition(target);
                 timer.reset();
                 initialized = true;
             }
 
             packet.put("Servo pos", stop.getPosition());
 
-            // keep running for 0.6 seconds
-            return timer.seconds() < 0.6;
+            return false;
         }
     }
 
@@ -43,11 +51,11 @@ public class ServoStopper {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                stop.setPosition(0.0);
+                stop.setPosition(def);
                 timer.reset();
                 initialized = true;
             }
-            return timer.seconds() < 0.6;
+            return false;
         }
     }
 

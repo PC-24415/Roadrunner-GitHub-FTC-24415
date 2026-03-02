@@ -17,22 +17,17 @@ public class MeepMeepBlueCloseStartTwoBalls {
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-50, -48, Math.toRadians(225)))
                 .lineToY(-14)
-                //Shoot
                 .waitSeconds(5)
-                //Intake ON
-                .splineTo(new Vector2d(-12,-49), Math.toRadians(270))
-                //Intake Off
+                .splineTo(new Vector2d(-12,-25), Math.toRadians(270))
+                .lineToY(-55)
+                .lineToY((-49))
                 .splineToLinearHeading(new Pose2d(-24,-24,Math.toRadians(135 + 90)), Math.toRadians(135 + 90))
-                //Shoot
                 .waitSeconds(5)
-                //Intake On
                 .lineToY(-12)
-                .splineToLinearHeading(new Pose2d(12,-36, Math.toRadians(270)), Math.toRadians(270))
+                .splineToLinearHeading(new Pose2d(12,-30, Math.toRadians(270)), Math.toRadians(270))
                 .lineToY(-50)
-                //Intake Off
                 .lineToY(-30)
                 .splineToLinearHeading(new Pose2d(-24,-24,Math.toRadians(135 + 90)), Math.toRadians(135 + 90))
-                //Shoot
                 .waitSeconds(5)
                 .build());
 

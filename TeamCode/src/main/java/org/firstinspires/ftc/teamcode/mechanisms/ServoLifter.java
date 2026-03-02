@@ -17,7 +17,7 @@ public class ServoLifter {
         this.targetPosition = tp;
         lift = s;
         lift.setDirection(Servo.Direction.REVERSE);
-        lift.setPosition(1);
+        lift.setPosition(-0.1);
     }
 
     public class LiftUp implements Action {
@@ -27,15 +27,14 @@ public class ServoLifter {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPosition(0.32);
+                lift.setPosition(0.06);
                 timer.reset();
                 initialized = true;
             }
 
             packet.put("Servo pos", lift.getPosition());
 
-            // keep running for 0.6 seconds
-            return timer.seconds() < 0.6;
+            return false;
         }
     }
 
@@ -46,11 +45,11 @@ public class ServoLifter {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPosition(1);
+                lift.setPosition(-0.1);
                 timer.reset();
                 initialized = true;
             }
-            return timer.seconds() < 0.6;
+            return false;
         }
     }
 

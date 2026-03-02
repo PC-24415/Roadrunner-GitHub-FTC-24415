@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autopaths.FTCDECODE2026.CloseStarts;
+package org.firstinspires.ftc.teamcode.autopaths.FTCDECODE2026.FarStarts;
 
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.ParallelAction;
@@ -19,8 +19,8 @@ import org.firstinspires.ftc.teamcode.mechanisms.flyWheelMotor;
 import org.firstinspires.ftc.teamcode.mechanisms.intakeMotor;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 
-@Autonomous(name = "RedCloseStartTwoBalls")
-public class RedCloseStartTwoBalls extends LinearOpMode {
+@Autonomous(name = "RedFarShot")
+public class RedFarShot extends LinearOpMode{
     intakeMotor intakemotor;
     flyWheelMotor flyWheel;
     flyWheelMotor flyWheel2;
@@ -34,7 +34,7 @@ public class RedCloseStartTwoBalls extends LinearOpMode {
     @Override
     public void runOpMode() {
         //CREATES STARTING POSE
-        Pose2d beginPose = new Pose2d(new Vector2d(-50, 48), Math.toRadians(135));
+        Pose2d beginPose = new Pose2d(new Vector2d(60, 14), Math.toRadians(180));
 
         //INIT PHASE -HARDWARE BELONGS HERE
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
@@ -51,26 +51,15 @@ public class RedCloseStartTwoBalls extends LinearOpMode {
         waitForStart();
 
         Action path = drive.actionBuilder(beginPose)
-                .stopAndAdd(spinClose())
-                .lineToY(14)
-                .stopAndAdd(TriLift())
-                .stopAndAdd(intakemotor.setpowerOn())
-                .splineTo(new Vector2d(-12, 55), Math.toRadians(90))
-                .splineToLinearHeading(new Pose2d(-24, 24, Math.toRadians(135)), Math.toRadians(135))
-                .stopAndAdd(TriLift())
-                .stopAndAdd(intakemotor.setpowerOn())
-                .lineToY(12)
-                .splineToLinearHeading(new Pose2d(12, 30, Math.toRadians(90)), Math.toRadians(90))
-                .lineToY(62)
-                .lineToY(30)
-                .splineToLinearHeading(new Pose2d(-24, 24, Math.toRadians(135)), Math.toRadians(135))
+                .stopAndAdd(spinFar())
+                .splineToLinearHeading( new Pose2d(50,12,Math.toRadians(157)), Math.toRadians(655))
                 .stopAndAdd(TriLift())
                 .stopAndAdd(intakemotor.setpowerOff())
                 .build();
 
         Actions.runBlocking(new SequentialAction((path)));
 
-        while (opModeIsActive())
+        while(opModeIsActive())
             telemetry.addData("Looped Counter:", counter++);
     }
 
@@ -135,7 +124,7 @@ public class RedCloseStartTwoBalls extends LinearOpMode {
     }
 
     //SIMPLIFY METHODS
-    private void initialize() {
+    private void initialize () {
         intakemotor = new intakeMotor(3.0, hardwareMap.get(DcMotor.class, "Intake"));
         flyWheel = new flyWheelMotor(1.0, hardwareMap.get(DcMotorEx.class, "launcher right"));
         flyWheel2 = new flyWheelMotor(1.0, hardwareMap.get(DcMotorEx.class, "launcher left"));
@@ -147,7 +136,7 @@ public class RedCloseStartTwoBalls extends LinearOpMode {
         turret = hardwareMap.get(DcMotorEx.class, "Turret");
     }
 
-    private void corrections() {
+    private void corrections(){
         flyWheel.ReverseDirection();
         flyWheelMotor.RunFlyWheelUsingEncoders(flyWheel, flyWheel2);
         turret.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

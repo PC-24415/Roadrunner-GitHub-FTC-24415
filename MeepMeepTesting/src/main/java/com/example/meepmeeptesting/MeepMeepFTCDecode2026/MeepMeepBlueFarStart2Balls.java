@@ -16,22 +16,18 @@ public class MeepMeepBlueFarStart2Balls {
                 .build();
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(60, -14, Math.toRadians(180)))
-                .splineToLinearHeading( new Pose2d(48,-12,Math.toRadians(205)), Math.toRadians(205))
-                //Shoot
-                .waitSeconds(5)
-                //Intake On
-                .splineTo(new Vector2d(35,-54), 3 * Math.PI / 2)
-                //Intake Off
                 .splineToLinearHeading( new Pose2d(50,-12,Math.toRadians(205)), Math.toRadians(205))
-                //Shoot
-                .waitSeconds(5)
-                //Intake ON
-                .splineTo(new Vector2d(12, -54), 3 * Math.PI / 2)
-                //Intake OFF
+                .waitSeconds(3.5)
+                .splineTo(new Vector2d(30,-30), 3 * Math.PI / 2)
+                .lineToY(-60)
+                .lineToY(-55)
+                .splineToLinearHeading( new Pose2d(50,-12,Math.toRadians(205)), Math.toRadians(205))
+                .waitSeconds(3.5)
+                .splineToLinearHeading(new Pose2d(8, -35, Math.toRadians(270)), Math.toRadians(270))
+                .lineToY(-55)
                 .lineToY(-35)
                 .splineTo(new Vector2d(50,-12), Math.toRadians(205- 180))
-                //Shoot
-                .waitSeconds(5)
+                .waitSeconds(3.5)
                 .build());
 
         myBot.setDimensions(18.0,18.0);

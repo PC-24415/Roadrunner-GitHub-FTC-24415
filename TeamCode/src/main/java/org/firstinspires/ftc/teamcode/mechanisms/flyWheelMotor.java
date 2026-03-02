@@ -39,7 +39,7 @@ public class flyWheelMotor {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                flyWheel.setVelocity(320)       ;//flyWheel.setPower(0.6);
+                flyWheel.setVelocity(1350)       ;//flyWheel.setPower(0.6);
                 initialized = true;
             }
 
@@ -54,11 +54,33 @@ public class flyWheelMotor {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                flyWheel.setVelocity(320);       //flyWheel.setPower(0.83);
+                flyWheel.setVelocity(1600);       //flyWheel.setPower(0.83);
                 initialized = true;
             }
 
             packet.put("Fly Wheel Power", flyWheel.getPower());
+            return false;
+        }
+    }
+
+    public class SpinTarget implements Action {
+        private boolean initialized = false;
+        private double target;
+
+        public SpinTarget (double targetVelocity){
+            this.target = targetVelocity;
+        }
+
+        @Override
+        public boolean run(@NonNull TelemetryPacket packet) {
+            if (!initialized) {
+                flyWheel.setVelocity(target);     //flyWheel.setPower(0.0);
+                initialized = true;
+            }
+
+            packet.put("Fly Wheel Power", flyWheel.getPower());
+            packet.put("Fly Wheel Velocity", flyWheel.getVelocity());
+            packet.put("Fly Wheel Target", target);
             return false;
         }
     }
@@ -89,4 +111,6 @@ public class flyWheelMotor {
     public Action spinDown(){
         return new SpinDown();
     }
+
+    public Action spinTarget(double targetVelocity){return new SpinTarget(targetVelocity);}
 }
