@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Drawing.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Drawing.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">dashboard</span><span class="s2">.</span><span class="s1">canvas</span><span class="s2">.</span><span class="s1">Canvas</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Pose2d</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Vector2d</span><span class="s2">;</span>
+
+<span class="s0">public final class </span><span class="s1">Drawing </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">Drawing</span><span class="s2">() {}</span>
+
+
+    <span class="s0">public static void </span><span class="s1">drawRobot</span><span class="s2">(</span><span class="s1">Canvas c</span><span class="s2">, </span><span class="s1">Pose2d t</span><span class="s2">) {</span>
+        <span class="s0">final double </span><span class="s1">ROBOT_RADIUS </span><span class="s2">= </span><span class="s3">9</span><span class="s2">;</span>
+
+        <span class="s1">c</span><span class="s2">.</span><span class="s1">setStrokeWidth</span><span class="s2">(</span><span class="s3">1</span><span class="s2">);</span>
+        <span class="s1">c</span><span class="s2">.</span><span class="s1">strokeCircle</span><span class="s2">(</span><span class="s1">t</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">x</span><span class="s2">, </span><span class="s1">t</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">y</span><span class="s2">, </span><span class="s1">ROBOT_RADIUS</span><span class="s2">);</span>
+
+        <span class="s1">Vector2d halfv </span><span class="s2">= </span><span class="s1">t</span><span class="s2">.</span><span class="s1">heading</span><span class="s2">.</span><span class="s1">vec</span><span class="s2">().</span><span class="s1">times</span><span class="s2">(</span><span class="s3">0.5 </span><span class="s2">* </span><span class="s1">ROBOT_RADIUS</span><span class="s2">);</span>
+        <span class="s1">Vector2d p1 </span><span class="s2">= </span><span class="s1">t</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">plus</span><span class="s2">(</span><span class="s1">halfv</span><span class="s2">);</span>
+        <span class="s1">Vector2d p2 </span><span class="s2">= </span><span class="s1">p1</span><span class="s2">.</span><span class="s1">plus</span><span class="s2">(</span><span class="s1">halfv</span><span class="s2">);</span>
+        <span class="s1">c</span><span class="s2">.</span><span class="s1">strokeLine</span><span class="s2">(</span><span class="s1">p1</span><span class="s2">.</span><span class="s1">x</span><span class="s2">, </span><span class="s1">p1</span><span class="s2">.</span><span class="s1">y</span><span class="s2">, </span><span class="s1">p2</span><span class="s2">.</span><span class="s1">x</span><span class="s2">, </span><span class="s1">p2</span><span class="s2">.</span><span class="s1">y</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

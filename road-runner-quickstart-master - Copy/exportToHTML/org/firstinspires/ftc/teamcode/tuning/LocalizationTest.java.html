@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>LocalizationTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+LocalizationTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">tuning</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">dashboard</span><span class="s2">.</span><span class="s1">FtcDashboard</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">dashboard</span><span class="s2">.</span><span class="s1">telemetry</span><span class="s2">.</span><span class="s1">MultipleTelemetry</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">dashboard</span><span class="s2">.</span><span class="s1">telemetry</span><span class="s2">.</span><span class="s1">TelemetryPacket</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Pose2d</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">PoseVelocity2d</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Vector2d</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">qualcomm</span><span class="s2">.</span><span class="s1">robotcore</span><span class="s2">.</span><span class="s1">eventloop</span><span class="s2">.</span><span class="s1">opmode</span><span class="s2">.</span><span class="s1">LinearOpMode</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">Drawing</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">MecanumDrive</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">TankDrive</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">LocalizationTest </span><span class="s0">extends </span><span class="s1">LinearOpMode </span><span class="s2">{</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">runOpMode</span><span class="s2">() </span><span class="s0">throws </span><span class="s1">InterruptedException </span><span class="s2">{</span>
+        <span class="s1">telemetry </span><span class="s2">= </span><span class="s0">new </span><span class="s1">MultipleTelemetry</span><span class="s2">(</span><span class="s1">telemetry</span><span class="s2">, </span><span class="s1">FtcDashboard</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">().</span><span class="s1">getTelemetry</span><span class="s2">());</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">TuningOpModes</span><span class="s2">.</span><span class="s1">DRIVE_CLASS</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">MecanumDrive</span><span class="s2">.</span><span class="s0">class</span><span class="s2">)) {</span>
+            <span class="s1">MecanumDrive drive </span><span class="s2">= </span><span class="s0">new </span><span class="s1">MecanumDrive</span><span class="s2">(</span><span class="s1">hardwareMap</span><span class="s2">, </span><span class="s0">new </span><span class="s1">Pose2d</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">));</span>
+
+            <span class="s1">waitForStart</span><span class="s2">();</span>
+
+            <span class="s0">while </span><span class="s2">(</span><span class="s1">opModeIsActive</span><span class="s2">()) {</span>
+                <span class="s1">drive</span><span class="s2">.</span><span class="s1">setDrivePowers</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PoseVelocity2d</span><span class="s2">(</span>
+                        <span class="s0">new </span><span class="s1">Vector2d</span><span class="s2">(</span>
+                                <span class="s2">-</span><span class="s1">gamepad1</span><span class="s2">.</span><span class="s1">left_stick_y</span><span class="s2">,</span>
+                                <span class="s2">-</span><span class="s1">gamepad1</span><span class="s2">.</span><span class="s1">left_stick_x</span>
+                        <span class="s2">),</span>
+                        <span class="s2">-</span><span class="s1">gamepad1</span><span class="s2">.</span><span class="s1">right_stick_x</span>
+                <span class="s2">));</span>
+
+                <span class="s1">drive</span><span class="s2">.</span><span class="s1">updatePoseEstimate</span><span class="s2">();</span>
+
+                <span class="s1">Pose2d pose </span><span class="s2">= </span><span class="s1">drive</span><span class="s2">.</span><span class="s1">localizer</span><span class="s2">.</span><span class="s1">getPose</span><span class="s2">();</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;x&quot;</span><span class="s2">, </span><span class="s1">pose</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">x</span><span class="s2">);</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;y&quot;</span><span class="s2">, </span><span class="s1">pose</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">y</span><span class="s2">);</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;heading (deg)&quot;</span><span class="s2">, </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">toDegrees</span><span class="s2">(</span><span class="s1">pose</span><span class="s2">.</span><span class="s1">heading</span><span class="s2">.</span><span class="s1">toDouble</span><span class="s2">()));</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">update</span><span class="s2">();</span>
+
+                <span class="s1">TelemetryPacket packet </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TelemetryPacket</span><span class="s2">();</span>
+                <span class="s1">packet</span><span class="s2">.</span><span class="s1">fieldOverlay</span><span class="s2">().</span><span class="s1">setStroke</span><span class="s2">(</span><span class="s4">&quot;#3F51B5&quot;</span><span class="s2">);</span>
+                <span class="s1">Drawing</span><span class="s2">.</span><span class="s1">drawRobot</span><span class="s2">(</span><span class="s1">packet</span><span class="s2">.</span><span class="s1">fieldOverlay</span><span class="s2">(), </span><span class="s1">pose</span><span class="s2">);</span>
+                <span class="s1">FtcDashboard</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">().</span><span class="s1">sendTelemetryPacket</span><span class="s2">(</span><span class="s1">packet</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">TuningOpModes</span><span class="s2">.</span><span class="s1">DRIVE_CLASS</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">TankDrive</span><span class="s2">.</span><span class="s0">class</span><span class="s2">)) {</span>
+            <span class="s1">TankDrive drive </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TankDrive</span><span class="s2">(</span><span class="s1">hardwareMap</span><span class="s2">, </span><span class="s0">new </span><span class="s1">Pose2d</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">));</span>
+
+            <span class="s1">waitForStart</span><span class="s2">();</span>
+
+            <span class="s0">while </span><span class="s2">(</span><span class="s1">opModeIsActive</span><span class="s2">()) {</span>
+                <span class="s1">drive</span><span class="s2">.</span><span class="s1">setDrivePowers</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PoseVelocity2d</span><span class="s2">(</span>
+                        <span class="s0">new </span><span class="s1">Vector2d</span><span class="s2">(</span>
+                                <span class="s2">-</span><span class="s1">gamepad1</span><span class="s2">.</span><span class="s1">left_stick_y</span><span class="s2">,</span>
+                                <span class="s3">0.0</span>
+                        <span class="s2">),</span>
+                        <span class="s2">-</span><span class="s1">gamepad1</span><span class="s2">.</span><span class="s1">right_stick_x</span>
+                <span class="s2">));</span>
+
+                <span class="s1">drive</span><span class="s2">.</span><span class="s1">updatePoseEstimate</span><span class="s2">();</span>
+
+                <span class="s1">Pose2d pose </span><span class="s2">= </span><span class="s1">drive</span><span class="s2">.</span><span class="s1">localizer</span><span class="s2">.</span><span class="s1">getPose</span><span class="s2">();</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;x&quot;</span><span class="s2">, </span><span class="s1">pose</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">x</span><span class="s2">);</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;y&quot;</span><span class="s2">, </span><span class="s1">pose</span><span class="s2">.</span><span class="s1">position</span><span class="s2">.</span><span class="s1">y</span><span class="s2">);</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">addData</span><span class="s2">(</span><span class="s4">&quot;heading (deg)&quot;</span><span class="s2">, </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">toDegrees</span><span class="s2">(</span><span class="s1">pose</span><span class="s2">.</span><span class="s1">heading</span><span class="s2">.</span><span class="s1">toDouble</span><span class="s2">()));</span>
+                <span class="s1">telemetry</span><span class="s2">.</span><span class="s1">update</span><span class="s2">();</span>
+
+                <span class="s1">TelemetryPacket packet </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TelemetryPacket</span><span class="s2">();</span>
+                <span class="s1">packet</span><span class="s2">.</span><span class="s1">fieldOverlay</span><span class="s2">().</span><span class="s1">setStroke</span><span class="s2">(</span><span class="s4">&quot;#3F51B5&quot;</span><span class="s2">);</span>
+                <span class="s1">Drawing</span><span class="s2">.</span><span class="s1">drawRobot</span><span class="s2">(</span><span class="s1">packet</span><span class="s2">.</span><span class="s1">fieldOverlay</span><span class="s2">(), </span><span class="s1">pose</span><span class="s2">);</span>
+                <span class="s1">FtcDashboard</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">().</span><span class="s1">sendTelemetryPacket</span><span class="s2">(</span><span class="s1">packet</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

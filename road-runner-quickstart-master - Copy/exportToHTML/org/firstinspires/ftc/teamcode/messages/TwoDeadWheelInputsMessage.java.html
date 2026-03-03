@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>TwoDeadWheelInputsMessage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TwoDeadWheelInputsMessage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">.</span><span class="s1">messages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">PositionVelocityPair</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">robotcore</span><span class="s2">.</span><span class="s1">external</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">AngleUnit</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">robotcore</span><span class="s2">.</span><span class="s1">external</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">AngularVelocity</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">robotcore</span><span class="s2">.</span><span class="s1">external</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">YawPitchRollAngles</span><span class="s2">;</span>
+
+<span class="s0">public final class </span><span class="s1">TwoDeadWheelInputsMessage </span><span class="s2">{</span>
+    <span class="s0">public long </span><span class="s1">timestamp</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">PositionVelocityPair par</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">PositionVelocityPair perp</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">yaw</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">pitch</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">roll</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">xRotationRate</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">yRotationRate</span><span class="s2">;</span>
+    <span class="s0">public double </span><span class="s1">zRotationRate</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">TwoDeadWheelInputsMessage</span><span class="s2">(</span><span class="s1">PositionVelocityPair par</span><span class="s2">, </span><span class="s1">PositionVelocityPair perp</span><span class="s2">, </span><span class="s1">YawPitchRollAngles angles</span><span class="s2">, </span><span class="s1">AngularVelocity angularVelocity</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">timestamp </span><span class="s2">= </span><span class="s1">System</span><span class="s2">.</span><span class="s1">nanoTime</span><span class="s2">();</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">par </span><span class="s2">= </span><span class="s1">par</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">perp </span><span class="s2">= </span><span class="s1">perp</span><span class="s2">;</span>
+        <span class="s2">{</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">yaw </span><span class="s2">= </span><span class="s1">angles</span><span class="s2">.</span><span class="s1">getYaw</span><span class="s2">(</span><span class="s1">AngleUnit</span><span class="s2">.</span><span class="s1">RADIANS</span><span class="s2">);</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">pitch </span><span class="s2">= </span><span class="s1">angles</span><span class="s2">.</span><span class="s1">getPitch</span><span class="s2">(</span><span class="s1">AngleUnit</span><span class="s2">.</span><span class="s1">RADIANS</span><span class="s2">);</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">roll </span><span class="s2">= </span><span class="s1">angles</span><span class="s2">.</span><span class="s1">getRoll</span><span class="s2">(</span><span class="s1">AngleUnit</span><span class="s2">.</span><span class="s1">RADIANS</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s2">{</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">xRotationRate </span><span class="s2">= </span><span class="s1">angularVelocity</span><span class="s2">.</span><span class="s1">xRotationRate</span><span class="s2">;</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">yRotationRate </span><span class="s2">= </span><span class="s1">angularVelocity</span><span class="s2">.</span><span class="s1">yRotationRate</span><span class="s2">;</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">zRotationRate </span><span class="s2">= </span><span class="s1">angularVelocity</span><span class="s2">.</span><span class="s1">zRotationRate</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

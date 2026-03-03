@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Localizer.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #5f826b; font-style: italic;}
+.s4 { color: #67a37c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Localizer.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">firstinspires</span><span class="s2">.</span><span class="s1">ftc</span><span class="s2">.</span><span class="s1">teamcode</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">Pose2d</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">acmerobotics</span><span class="s2">.</span><span class="s1">roadrunner</span><span class="s2">.</span><span class="s1">PoseVelocity2d</span><span class="s2">;</span>
+
+<span class="s3">/**</span>
+ <span class="s3">* Interface for localization methods.</span>
+ <span class="s3">*/</span>
+<span class="s0">public interface </span><span class="s1">Localizer </span><span class="s2">{</span>
+    <span class="s0">void </span><span class="s1">setPose</span><span class="s2">(</span><span class="s1">Pose2d pose</span><span class="s2">);</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Returns the current pose estimate.</span>
+     <span class="s3">* NOTE: Does not update the pose estimate;</span>
+     <span class="s3">* you must call update() to update the pose estimate.</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">the Localizer's current pose</span>
+     <span class="s3">*/</span>
+    <span class="s1">Pose2d getPose</span><span class="s2">();</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Updates the Localizer's pose estimate.</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">the Localizer's current velocity estimate</span>
+     <span class="s3">*/</span>
+    <span class="s1">PoseVelocity2d update</span><span class="s2">();</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
